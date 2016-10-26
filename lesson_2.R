@@ -18,11 +18,32 @@ primer(11)
 # number_4
 for(i in 1:20){
   if(i %% 5 ==0){
-    print(c(i,"Good: NUMBER"))
+    print(paste(i,"Good: NUMBER"))
   } else if (any(i %% 2:(i-1)==0)){
-    print(c(i,"Job: NUMBER"))
+    print(paste(i,"Job: NUMBER"))
   } else {
-    print (c(i,""))
+    print (paste(i,""))
   }
   }
 #number_5
+e=2.71828
+# - e is for Euler's number which is 2.71828.
+pop.size<-function(t,a,c,b){
+  y <- a*e^((-b*e)^(-c*t));
+  return(y)
+}
+pop.size(8,10,-0.5,-0.3)
+# - The user inputs the time, population size, and parameters.
+
+# number_6:
+e=2.71828
+# - e is for Euler's number which is 2.71828.
+t = 15
+# - the given length of time is 15 years.
+pop.size<-function(a,c,b){
+  y <- a*e^((-b*e)^(-c*t));
+  return(y)
+}
+pop.size(10000,-0.5,-0.5)
+# The user inputs the population size and parameters.
+

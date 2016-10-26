@@ -58,27 +58,60 @@ expand.grid(time=seq(60,10,-10), speed=seq(5,25,5))
 # eigen - calculates and prints the eigenvalues and eigenvectors of the matrix provided.
 eigen(cbind(c(4,2),c(4,2)),symmetric = TRUE)
 #       - 
-# %*% -  lower.tri, upper.tri, diag (try ?"%*%", not ?%*%, as this is an operator, and document
-# gl
-# identical
-# image
+# %*% - multiplies two matrices while they are conformable.
+a<- 1:10
+b<- a%*%a
+# - 
+
+#lower.tri - returns a matrix of logicals the same size as the given matrix with TRUE in the lower triangle of the matrix.
+lower.tri(tabl, diag = TRUE)
+# - returns the matrix of logicals with the diagonal with the value: TRUE.
+lower.tri(tabl, diag = FALSE)
+# - returns the matrix of logicals with the diagonal with the value: FALSE.
+
+# upper.tri - returns a matrix of logicals the same size as the given matrix with TRUE in the upper triangle of the matrix.
+upper.tri(tabl, diag = TRUE)
+# - returns the matrix of logicals with the diagonal with the value: TRUE.
+
+# diag - Extracts or replaces the diagonal of a matrix
+diag(tabl)
+# - prints out the diagonal values of the matrix 'tabl'
+diag(x=1, nrow, ncol)
+# - dimensions may be given when x is not a matrix. 
+
+# gl - produce factors by indicating the pattern of their levels.
+gl(3,9,27)
+# - produces the 9 replications of the numbers 1:3 each for a total of 27 numbers in length.
+
+# identical - tests whether or not two objects are exactly equal. Returning TRUE in the case that both are equal and FALSE otherwise.
+identical(1,-1)
+# - reports FALSE because 1 is not exactly equal to -1.
+identical(1,0.99999999999)
+# - values that are in very close proximity show FALSE.
+
+# image - produces a grid of colored or gray-scale rectangles with colors given by the values. 
+c <- matrix(5*(1:20))
+d <- matrix(5*(1:20))
+x <- matrix(-c*-d)
+image(c,d, x, col = topo.colors(100), axes = FALSE)
+
 # library
 # length
 # jitter
-• ls; what does rm(list=ls()) do?
-• mean, median, max, min
-• paste
-• read.csv, read.table, write.csv, write.table
-• rnorm, pnorm, dnorm, qnorm
-• runif, rpois
-• rank
-• sort, rank, order
-• outer
-• rep
-• rowSum, colSum
-• seq
-• source
-• which, which.min, which.max
-• setdiff, intersect, union
-• table
-• with
+# ls; what does rm(list=ls()) do?
+# mean, median, max, min
+# paste
+# read.csv, read.table, write.csv, write.table
+# rnorm, pnorm, dnorm, qnorm
+# runif, rpois
+# rank
+# sort, rank, order
+# outer
+# rep
+# rowSum, colSum
+# seq
+# source
+# which, which.min, which.max
+# setdiff, intersect, union
+# table
+# with
