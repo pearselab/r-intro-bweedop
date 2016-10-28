@@ -26,24 +26,31 @@ for(i in 1:20){
   }
   }
 #number_5
-e=2.71828
 # - e is for Euler's number which is 2.71828.
-pop.size<-function(t,a,c,b){
-  y <- a*e^((-b*e)^(-c*t));
+pop.size<-function(t,a,b,c){
+  y <- a*exp(-b*exp(-c*t))
   return(y)
 }
 pop.size(8,10,-0.5,-0.3)
 # - The user inputs the time, population size, and parameters.
 
 # number_6:
-e=2.71828
-# - e is for Euler's number which is 2.71828.
-t = 15
-# - the given length of time is 15 years.
-pop.size<-function(a,c,b){
-  y <- a*e^((-b*e)^(-c*t));
-  return(y)
+pop.size<-function(a,b,c){
+  t <- seq(1,30,5)
+  y <- a*exp(-b*exp(-c*t))
+  plot((y) ,type = 'b', xlab="Time(Years)", ylab = "Population", main = "Population Growth")
 }
-pop.size(10000,-0.5,-0.5)
+pop.size(10,-0.5,-0.3)
 # The user inputs the population size and parameters.
 
+#number_7
+
+pop.size<-function(a,b,c){
+  t <- seq(0,100,by=5)
+  y <- a*exp(-b*exp(-c*t))
+  plot((y) ,xaxt="t",type = 'b', xlab="Time(Years)", ylab = "Population", main = "Population Growth", pch = 16, col= ifelse(y > a&y < b,'blue','red'))
+  return(y)
+}
+pop.size(10,0.5,0.3)
+
+#number_8
