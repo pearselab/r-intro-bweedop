@@ -1,4 +1,4 @@
-# Lesson_3
+# question_1
 new.cat <- function(color, weight){
   output <- list(color=color, weight=weight)
   class(output) <- "cat"
@@ -20,5 +20,7 @@ felix <- new.cat("orange", 7)
 print.cat <- function(x, ...){
   cat("This", color, "cat weighs", weight, "kg\n")
 }
+# question_2
+
 
 

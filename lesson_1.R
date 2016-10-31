@@ -95,10 +95,21 @@ d <- matrix(5*(1:20))
 x <- matrix(-c*-d)
 image(c,d, x, col = topo.colors(100), axes = FALSE)
 
-# library
-# length
-# jitter
-# ls; what does rm(list=ls()) do?
+# library - loads and applies packages
+library(base)
+# - loads applies the 'base' package
+# - package that is being loaded must be installed
+
+# length - retrieve or set the length of some vector or any other object.
+v <- c(1:10)
+length(v)
+# - returns the value of the vector 'v' which is 10.
+
+# jitter - sort of wobbles the value of some vector in order to avoid ties of values.
+jitter(c(1:10)) 
+# - returns the values 1:10 but with a bit of wobble or noise added to each value in the vector.
+
+# ls - 
 # mean, median, max, min
 # paste
 # read.csv, read.table, write.csv, write.table

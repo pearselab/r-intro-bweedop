@@ -65,12 +65,18 @@ pop.size(10,0.5,0.3)
 # - Due to 'a' being an asymptote there are no values of y greater than a.
 
 # number_9
-n<-c(1:20)
-stars<-function(x,y){
-  top<-matrix(n,ncol = x, nrow = y)
-  print(noquote(top))
+stars<-function(x,y,ast,txt){
+  for(i in 1:(x-1))
+    cat(ast)
+
+  for(j in 1:(y-1)){
+    cat(ast,txt,ast,"\n")
+  }
+  for(k in 1:(x)
+    cat(ast)
 }
-stars(4,5)
+stars(5,5,"*"," ")
+
 # number_12
 hurdle <- function(n,p,l){
   
