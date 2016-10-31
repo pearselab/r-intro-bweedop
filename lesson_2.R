@@ -26,7 +26,7 @@ for(i in 1:20){
   }
   }
 #number_5
-# - e is for Euler's number which is 2.71828.
+
 pop.size<-function(t,a,b,c){
   y <- a*exp(-b*exp(-c*t))
   return(y)
@@ -48,9 +48,30 @@ pop.size(10,-0.5,-0.3)
 pop.size<-function(a,b,c){
   t <- seq(0,100,by=5)
   y <- a*exp(-b*exp(-c*t))
-  plot((y) ,xaxt="t",type = 'b', xlab="Time(Years)", ylab = "Population", main = "Population Growth", pch = 16, col= ifelse(y > a&y < b,'blue','red'))
+  plot((y) ,xaxt="t",type = 'b', xlab="Time(Years)", ylab = "Population", main = "Population Growth", pch = 16, col= ifelse(y < a | y > b,'red','blue'))
+  return(y)
+}
+pop.size(100,0.5,0.5)
+
+#number_8
+
+pop.size<-function(a,b,c){
+  t <- seq(0,100,by=5)
+  y <- a*exp(-b*exp(-c*t))
+  plot((y) ,xaxt="t",type = 'b', xlab="Time(Years)", ylab = "Population", main = "Population Growth", pch = 16, col= ifelse(y > a ,'purple',NA))
   return(y)
 }
 pop.size(10,0.5,0.3)
+# - Due to 'a' being an asymptote there are no values of y greater than a.
 
-#number_8
+# number_9
+n<-c(1:20)
+stars<-function(x,y){
+  top<-matrix(n,ncol = x, nrow = y)
+  print(noquote(top))
+}
+stars(4,5)
+# number_12
+hurdle <- function(n,p,l){
+  
+}
