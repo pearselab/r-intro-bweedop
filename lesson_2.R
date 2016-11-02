@@ -117,30 +117,28 @@ stars(3,3,"wdp", "yo")
 
 # number_12
 
-hurdle <- function(p,n,lam){
-  presence<-(rbinom(1,1,p))
+hurdle <- function(n){
+  m<-matrix(nrow=n,ncol=1)
+  for(i in 1:n){
+  presence<-(rbinom(1,1,sample(seq(from=0, to=1, by=0.01))))
   if(presence==1){
-    abundance<-(rpois(n,lam))
+    abundance<-(rpois(n,sample(seq(from=0,to=10, by=1))))
     return(abundance)
   } else {
-    return("None Present")
+    abundance<-0
   }
+  m[i,]<-abundance
+  }
+  return(m)
 }
-hurdle(0.1,100,2)
+hurdle(10)
 
 # number_13
-hurdle <- function(p,n,lam){
-  presence<-(rbinom(1,1,p))
-  if(presence==1){
-    get.name<-(name,)
-    abundance<-(rpois(n,lam))
-    return(abundance)
-  } else {
-    return("None Present")
+specieshurdle <- function(spec,n){
+  m<-matrix(nrow=n,ncol=spec)
+  for(i in 1:spec){
+  m[,i]<-hurdle(n)
+  } 
+  return(m)
   }
-}
-hurdle(0.1,100,2)
-
-
-
-
+specieshurdle(5,10)
