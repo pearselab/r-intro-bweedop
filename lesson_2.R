@@ -66,18 +66,81 @@ pop.size(10,0.5,0.3)
 
 # number_9
 stars<-function(x,y,ast,txt){
-  for(i in 1:(x-1))
+  for(i in 1:x){
     cat(ast)
-
-  for(j in 1:(y-1)){
-    cat(ast,txt,ast,"\n")
   }
-  for(k in 1:(x)
+  cat('\n')
+  for(j in 1:y-1){
+    cat(ast,txt,ast,'\n')
+  }
+  for(k in 1:x){
     cat(ast)
+  }
 }
 stars(5,5,"*"," ")
 
-# number_12
-hurdle <- function(n,p,l){
-  
+# number_10
+stars<-function(x,y,ast,txt){
+  for(i in 1:x){
+    cat(ast)
+  }
+  cat('\n')
+  for(j in y:y){
+    cat(ast,'           ',ast,'\n')
+  }
+  for(j in y:y){
+    cat(ast,txt,ast,'\n')
+  }
+  for(j in y:y){
+    cat(ast,'           ',ast,'\n')
+  }
+  for(k in 1:x){
+    cat(ast)
+  }
 }
+stars(15,5,"*"," asterisks ")
+
+# number_11
+stars<-function(x,y,ast, txt){
+  for(i in 1:x){
+    cat(ast)
+  }
+  cat('\n')
+  for(j in 1:1){
+    cat('w  ', txt, ' w', '\n')
+  }
+  for(k in 1:x){
+    cat(ast)
+  }
+}
+stars(3,3,"wdp", "yo")
+
+# number_12
+
+hurdle <- function(p,n,lam){
+  presence<-(rbinom(1,1,p))
+  if(presence==1){
+    abundance<-(rpois(n,lam))
+    return(abundance)
+  } else {
+    return("None Present")
+  }
+}
+hurdle(0.1,100,2)
+
+# number_13
+hurdle <- function(p,n,lam){
+  presence<-(rbinom(1,1,p))
+  if(presence==1){
+    get.name<-(name,)
+    abundance<-(rpois(n,lam))
+    return(abundance)
+  } else {
+    return("None Present")
+  }
+}
+hurdle(0.1,100,2)
+
+
+
+

@@ -45,7 +45,7 @@ diff(1:10) #Returns the difference of the sequential values e.g. 2-1, 3-4.
 
 # dim - get or set the dimensions of an object.
 table<-c(1:20);dim(table)<-c(4,5) 
-#    - Creates a table for the numeric vector of 1:20 with the dimensions of four rows and four columns.
+# - Creates a table for the numeric vector of 1:20 with the dimensions of four rows and four columns.
 
 
 # rownames, colnames, names - assigns or retrieves the names pertaining to a given row, column, or both.
@@ -53,7 +53,7 @@ colnames(beetledata) # - returns the names of the dataset 'beetedata.'
 
 # expand.grid - print out a data frame that is a combination of all the supplied vectors or factors.
 expand.grid(time=seq(60,10,-10), speed=seq(5,25,5))
-#           - creates a data frame with the columns time and speed ranging from the provided supplied vectors.  
+#  - creates a data frame with the columns time and speed ranging from the provided supplied vectors.  
 
 # eigen - calculates and prints the eigenvalues and eigenvectors of the matrix provided.
 eigen(cbind(c(4,2),c(4,2)),symmetric = TRUE)
@@ -109,20 +109,52 @@ length(v)
 jitter(c(1:10)) 
 # - returns the values 1:10 but with a bit of wobble or noise added to each value in the vector.
 
-# ls - 
-# mean, median, max, min
-# paste
+# ls - command returns the name of objects used in a function or the command.
+model<-function(){
+  t<-3*(5+5)
+  ls()
+}
+model()
+# - calling the the function with no argument returns the object within the function.
+
+# - mean, median, max, min - these functions return useful statistical information for data analysis.
+y<-c(10:238)
+mean(y)
+# - returns the mean of whatever vector of values called.
+median(y)
+# - returns the median value of the vector called in the command.
+max(y)
+# - returns the maximum value of the vector called.
+min(y)
+# - returns the minimum value of the vector called.
+
+# paste - joins together two or more vectors after converting them to character strings.
+
+
 # read.csv, read.table, write.csv, write.table
+
 # rnorm, pnorm, dnorm, qnorm
+
 # runif, rpois
+
 # rank
+
 # sort, rank, order
+
 # outer
+
 # rep
+
 # rowSum, colSum
+
 # seq
+
 # source
+
 # which, which.min, which.max
+
 # setdiff, intersect, union
+
 # table
+
 # with
