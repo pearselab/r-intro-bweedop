@@ -128,12 +128,17 @@ max(y)
 min(y)
 # - returns the minimum value of the vector called.
 
-# paste - joins together two or more vectors after converting them to character strings.
-
+# paste - joins together two or more vectors after converting them to a character string and returns the string.
+paste(1:4,9:12,sep = ",")
+# - joins the two vectors of values by increments.
 
 # read.csv, read.table, write.csv, write.table
+read.csv(beetledata.txt, header= TRUE,sep=",")
 
 # rnorm, pnorm, dnorm, qnorm
+rnorm(50, mean=27.3, sd=2.3)
+# - returns a random values of a normal distribution of a given number of observations, mean, and sd.
+pnorm(62, )
 
 # runif, rpois
 
@@ -157,4 +162,5 @@ min(y)
 
 # table
 
-# with
+# with - command that evaluates a called expression using the environment created by the data.
+with(beetledata, )

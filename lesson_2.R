@@ -134,6 +134,7 @@ hurdle <- function(n){
 hurdle(10)
 
 # number_13
+
 specieshurdle <- function(spec,n){
   m<-matrix(nrow=n,ncol=spec)
   for(i in 1:spec){
@@ -142,3 +143,21 @@ specieshurdle <- function(spec,n){
   return(m)
   }
 specieshurdle(5,10)
+
+# question_14
+deg_rad<-function(deg){(deg * pi) / (180)}
+lost<-function(y,x,days){
+  for(i in 1:days){
+  R <- 3961
+  long1<-deg_rad(x)
+  long2<-deg_rad()
+  lat1<-deg_rad(lat)
+  lat2<-deg_rad(y)
+  dlong<-(long1-long2)
+  dlat<-(lat1-lat2)
+  a = (sin(dlat/2))^2 + cos(lat1) * cos(lat2) * (sin(dlong/2))^2 
+  c = 2 * atan2( sqrt(a), sqrt(1-a) ) 
+  d = R * c
+  }
+  dlat <- rnorm(days,mean = sample(seq(from=0, to=20, by=2.5)), sd=1)
+lost(41.7, -111.8,100)
