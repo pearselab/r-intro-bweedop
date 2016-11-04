@@ -165,4 +165,17 @@ lost<-function(time){
 # - column 1 is latitude and column 2 is longitude
 
 
-
+cliff(100)
+# question_15
+cliff<-function(n){
+ dist<-0
+  for(i in 1:n){
+    dlat<-rnorm(1, mean = 0.43, sd= 0.01)
+    dlon<-rnorm(1, mean = 0.23, sd= 0.01)
+    dist<-dlat+dlon
+    ifelse(abs(dlon)>50|abs(dlon)<50){
+      return(i)
+    }
+ }
+}
+cliff(100)
