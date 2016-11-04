@@ -22,7 +22,7 @@ print.cat <- function(x, ...){
 }
 # question_2
 
-new.point<-function(x,y){
+new.point<-function(x,y,...){
   output<-list(x=x,y=y)
   class(output)<-"point"
   return(output)
@@ -73,24 +73,25 @@ plot.point<-function(corx,...){
     stop('this is not a point')
   a<-(corx$x)
   b<-(corx$y)
-  plot(a,b,type='p', xlab = "X", ylab = "Y")
+  plot(x=corx$x,y=corx$y,type='b', xlab = "X", ylab = "Y",xlim = range(c(0,10)),ylim = range(c(0,10)))
+  par(new=TRUE)
 }
 
 plot.line<-function(line){
   if(!inherits(line,"line"))
     stop("User must load line")
-  start<-(c(line$pointS$x,line$pointE$x))
-  end<-(c(line$pointS$y,line$pointE$y))
-  plot(start, end,type='l', xlab = "X", ylab = "Y")
+  start<-(c(pointS$x,pointE$x))
+  end<-(c(pointS$y,pointE$y))
+  plot(start, end,type='l', xlab = "", ylab = "",xlim = range(c(0,10)),ylim = range(c(0,10)))
 }
 
-
 # question_7
+
 
 plot.poly<-function(poly,...){
   if(!inherits(poly,"polygon"))
     stop("User must load full polygon")
-  a<-(c(poly$side1$x,poly$side1$x))
+  a<-(c(poly$side1$y,poly$side1$x))
   b<-(c(poly$side1$y,poly$side1$y))
   c<-(c(poly$side2$x,poly$side2$x))
   d<-(c(poly$side2$y,poly$side2$y))
@@ -101,7 +102,7 @@ plot.poly<-function(poly,...){
   i<-(c(poly$side5$x,poly$side5$x))
   j<-(c(poly$side5$y,poly$side5$y))
   plot.window(xlim=c(0,15),ylim=c(0,15))
-  plot(x<-c(a,c,e,g,i,a),y<-c(b,d,f,h,j,b),type='l', xlab = "X", ylab = "Y")
+  plot(x<-c(a,c,e,g,i,a),y<-c(b,d,f,h,j,b),type='l', xlab = "", ylab = "",xlim = range(c(0,10)),ylim = range(c(0,10)))
 }
 
 # question_8
@@ -114,6 +115,10 @@ add.canvas<-function(point,line,circle,polygon){
 }
 
 canvas.objects<-add.canvas(point_3,da.line,circle1,five.poly)
+
+plot.canvas<-function(canvas,...){
+  if(!inherits(canvas,"canvas"))
+    stop("User must load full polygon")
 
 # question_9
 
@@ -134,5 +139,5 @@ circle.area<-function(r,...){
 }
 
 poly.area<-function(r,...){
-  if(!inherits(r,"circle"))
-    stop("This is not a circle")
+  if(!inherits(r,"polygon"))
+    stop("This is not a polygon")

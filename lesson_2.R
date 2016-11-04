@@ -149,13 +149,20 @@ specieshurdle(5,10)
 # question_14
 
 lost<-function(time){
-  distance<-0
-  for (i in 1:(time/5)){
-    dist<-sample(rnorm(100, mean = 0.0833, sd= 0.01))
-    total_distance<-distance+dist)
-    location<-matrix(total_distance)
+  distance<-matrix(0,nrow=time,ncol=2)
+  for (i in 1:100){
+    dlat<-rnorm((time/5), mean = 0.78, sd= 0.1)
+    dlon<-rnorm((time/5), mean = 0.65, sd= 0.1)
+    return(list(dlat,dlon))
+    distance[i,1]<-dlat
+    distance[i,2]<-dlon
   }
-  return(location)
+  colnames(distance, do.NULL = FALSE)
+  colnames(distance)<-c('latitude','longitude')
+  return(distance)
 }
+
+# - column 1 is latitude and column 2 is longitude
+
 
 
