@@ -65,19 +65,19 @@ pop.size(10,0.5,0.3)
 # - Due to 'a' being an asymptote there are no values of y greater than a.
 
 # number_9
-stars<-function(x,y,ast,txt){
+stars<-function(x,y,ast){
   for(i in 1:x){
     cat(ast)
   }
   cat('\n')
-  for(j in 1:y-1){
-    cat(ast,txt,ast,'\n')
+  for(j in 1:y-2){
+    cat(ast,rep('',y-3),ast,'\n')
   }
   for(k in 1:x){
     cat(ast)
   }
 }
-stars(5,5,"*"," ")
+stars(5,5,"*")
 
 # number_10
 stars<-function(x,y,ast,txt){
@@ -86,13 +86,13 @@ stars<-function(x,y,ast,txt){
   }
   cat('\n')
   for(j in y:y){
-    cat(ast,'           ',ast,'\n')
+    cat(ast,rep('',y+7),ast,'\n')
   }
   for(j in y:y){
     cat(ast,txt,ast,'\n')
   }
   for(j in y:y){
-    cat(ast,'           ',ast,'\n')
+    cat(ast,rep('',y+7),ast,'\n')
   }
   for(k in 1:x){
     cat(ast)
@@ -118,7 +118,7 @@ stars(3,3,"wdp", "yo")
 # number_12
 
 hurdle <- function(n){
-  m<-matrix(nrow=n,ncol=1)
+  m<-matrix(nrow=1,ncol=n)
   for(i in 1:n){
   presence<-(rbinom(1,1,sample(seq(from=0, to=1, by=0.01))))
   if(presence==1){
@@ -127,7 +127,7 @@ hurdle <- function(n){
   } else {
     abundance<-0
   }
-  m[i,]<-abundance
+  m[,i]<-abundance
   }
   return(m)
 }
@@ -141,23 +141,21 @@ specieshurdle <- function(spec,n){
   m[,i]<-hurdle(n)
   } 
   return(m)
-  }
+}
 specieshurdle(5,10)
 
+# - simulates for a input amount of species and sites. 
+
 # question_14
-deg_rad<-function(deg){(deg * pi) / (180)}
-lost<-function(y,x,days){
-  for(i in 1:days){
-  R <- 3961
-  long1<-deg_rad(x)
-  long2<-deg_rad()
-  lat1<-deg_rad(lat)
-  lat2<-deg_rad(y)
-  dlong<-(long1-long2)
-  dlat<-(lat1-lat2)
-  a = (sin(dlat/2))^2 + cos(lat1) * cos(lat2) * (sin(dlong/2))^2 
-  c = 2 * atan2( sqrt(a), sqrt(1-a) ) 
-  d = R * c
+
+lost<-function(time){
+  distance<-0
+  for (i in 1:(time/5)){
+    dist<-sample(rnorm(100, mean = 0.0833, sd= 0.01))
+    total_distance<-distance+dist)
+    location<-matrix(total_distance)
   }
-  dlat <- rnorm(days,mean = sample(seq(from=0, to=20, by=2.5)), sd=1)
-lost(41.7, -111.8,100)
+  return(location)
+}
+
+

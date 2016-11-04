@@ -22,78 +22,99 @@ print.cat <- function(x, ...){
 }
 # question_2
 
-locate<-function(y,x){
-  point<-list(latitude = y, longitude = x)
-  class(point)<-"point"
-  return(point)
+new.point<-function(x,y){
+  output<-list(x=x,y=y)
+  class(output)<-"point"
+  return(output)
 }
-loganUT<-locate(41.7, -111.8)
-boiseID<-locate(43.6187, -116.2146)
+pointS<-new.point(2, 2)
+pointE<-new.point(8, 2)
+point_1<-new.point(9,5)
+point_2<-new.point(5,7)
+point_3<-new.point(1,5)
 
 # question_3
-deg_rad<-function(deg){(deg * pi) / (180)}
+
 distance<-function(p1, p2, ...){
   if(!inherits(p1,"point") | !inherits(p2,"point"))
-    stop("the point is not in space")
-  R <- 3961
-  long1<-deg_rad(p1$longitude)
-  long2<-deg_rad(p2$longitude)
-  lat1<-deg_rad(p1$latitude)
-  lat2<-deg_rad(p2$latitude)
-  dlong<-(long1-long2)
-  dlat<-(lat1-lat2)
-  a = (sin(dlat/2))^2 + cos(lat1) * cos(lat2) * (sin(dlong/2))^2 
-  c = 2 * atan2( sqrt(a), sqrt(1-a) ) 
-  d = R * c
-  cat("The distance is", d,"miles.")
+    stop("points not loaded")
+  distance<-sqrt((p2$x-p1$x)^2+(p2$y-p1$y)^2)
+  return(distance)
 }
 
 # question_4
 
-new.line<- function(x,y){
-  points<-list(point_x=x, point_y=y)
-  class(points)="line"
-  return(points)
-}
-point_1<-new.point(9,10)
-point_2<-new.point(1,2)
-
-line<-function(p1,p2,...){
-  if(!inherits(p1,"line") | !inherits(p2,"line"))
-    stop("User must load point")
-  plot(x=c(p1$point_x, p2$point_x), y=c(p1$point_y,p2$point_y),type='b', xlab = "X", ylab = "Y")
+new.line<- function(start,end,...){
+  output<-list(pointS=start, pointE=end)
+  class(output)="line"
+  return(output)
 }
 
-# question_5,6,7
+da.line<-new.line(pointS,pointE)
+line_2<-new.line(pointE,point_1)
+line_3<-new.line(point_1,point_2)
+line_4<-new.line(point_2,point_3)
+line_5<-new.line(point_3,pointS)
 
-new.poly<-function(x,y){
-  points<-list(x=x,y=y)
-  class(points)="polygon"
-  return(points)
+# question_5
+
+new.poly<-function(s1,s2,s3,s4,s5,...){
+  output<-list(side1=s1,side2=s2,side3=s3,side4=s4,side5=s5)
+  class(output)="polygon"
+  return(output)
 }
-s1<-new.poly(3,1)
-s2<-new.poly(4,1)
-s3<-new.poly(5,2)
-s4<-new.poly(4,3)
-s5<-new.poly(3,3)
-s6<-new.poly(2,2)
 
-plot.poly<-function(p1,p2,p3,p4,p5,p6,...){
-  if(!inherits(p1,"polygon") | !inherits(p2,"polygon") | !inherits(p3,"polygon") |!inherits(p4,"polygon") |!inherits(p5,"polygon")|!inherits(p6,"polygon"))
-    stop("User must load point")
-  plot(x=c(p1$x,p2$x,p3$x,p4$x,p5$x,p6$x,p1$x), y=c(p1$y,p2$y,p3$y,p4$y,p5$y,p6$y,p1$y),type='b', xlab = "X", ylab = "Y")
+five.poly<-new.poly(pointS,pointE,point_1,point_2,point_3)
+
+# question_6
+
+plot.point<-function(corx,...){
+  if(!inherits(corx,"point"))
+    stop('this is not a point')
+  a<-(corx$x)
+  b<-(corx$y)
+  plot(a,b,type='p', xlab = "X", ylab = "Y")
+}
+
+plot.line<-function(line){
+  if(!inherits(line,"line"))
+    stop("User must load line")
+  start<-(c(line$pointS$x,line$pointE$x))
+  end<-(c(line$pointS$y,line$pointE$y))
+  plot(start, end,type='l', xlab = "X", ylab = "Y")
+}
+
+
+# question_7
+
+plot.poly<-function(poly,...){
+  if(!inherits(poly,"polygon"))
+    stop("User must load full polygon")
+  a<-(c(poly$side1$x,poly$side1$x))
+  b<-(c(poly$side1$y,poly$side1$y))
+  c<-(c(poly$side2$x,poly$side2$x))
+  d<-(c(poly$side2$y,poly$side2$y))
+  e<-(c(poly$side3$x,poly$side3$x))
+  f<-(c(poly$side3$y,poly$side3$y))
+  g<-(c(poly$side4$x,poly$side4$x))
+  h<-(c(poly$side4$y,poly$side4$y))
+  i<-(c(poly$side5$x,poly$side5$x))
+  j<-(c(poly$side5$y,poly$side5$y))
+  plot.window(xlim=c(0,15),ylim=c(0,15))
+  plot(x<-c(a,c,e,g,i,a),y<-c(b,d,f,h,j,b),type='l', xlab = "X", ylab = "Y")
 }
 
 # question_8
 
-add<-function(poi,li,cir,poly){
-  if(!inherits(poi,"point") | !inherits(li,"line") | !inherits(cir,"circle") |!inherits(poly,"polygon"))
+add.canvas<-function(point,line,circle,polygon){
+  if(!inherits(point,"point") | !inherits(line,"line") | !inherits(circle,"circle") |!inherits(polygon,"polygon"))
     stop("I think you missed something")
-  canvas<-list(point=poi,line=li,circle=cir,polygon=poly)
+  canvas<-list(point=point,line=line,circle=circle,polygon=polygon)
   return(canvas)
 }
-w=
-canvas<-add()
+
+canvas.objects<-add.canvas(point_3,da.line,circle1,five.poly)
+
 # question_9
 
 new.circle<-function(x,y,r){
@@ -105,15 +126,13 @@ circle1<-new.circle(3,3,5)
 
 # question_10
 
-area
-
-
-circle<-function(x,y,r){
-  th = seq(0,2*pi,length=200)
-  plot(c((x-5),(x+5)),c((y-5),(y+5), type='n')
-       
-  linesxunit = r * cos(th) + x
-  yunit = r * sin(th) + y
-  plot(xunit, yunit)
+circle.area<-function(r,...){
+  if(!inherits(r,"circle"))
+    stop("This is not a circle")
+  area<-pi*r^2
+  return(area)
 }
 
+poly.area<-function(r,...){
+  if(!inherits(r,"circle"))
+    stop("This is not a circle")

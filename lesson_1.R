@@ -58,10 +58,11 @@ expand.grid(time=seq(60,10,-10), speed=seq(5,25,5))
 # eigen - calculates and prints the eigenvalues and eigenvectors of the matrix provided.
 eigen(cbind(c(4,2),c(4,2)),symmetric = TRUE)
 #       - 
-# %*% - multiplies two matrices while they are conformable.
-a<- 1:10
-b<- a%*%a
-# - 
+# %*% - multiplies two matrices or a matrix with a vector while they are conformable.
+a<-matrix(1:15,nrow=3,ncol=5)
+c<-diag(1:5)
+b<- a%*%c
+# - multiplies the matrix with the vector to create another 3by5 matrix.
 
 #lower.tri - returns a matrix of logicals the same size as the given matrix with TRUE in the lower triangle of the matrix.
 lower.tri(tabl, diag = TRUE)
@@ -135,32 +136,66 @@ paste(1:4,9:12,sep = ",")
 # read.csv, read.table, write.csv, write.table
 read.csv(beetledata.txt, header= TRUE,sep=",")
 
-# rnorm, pnorm, dnorm, qnorm
+# - rnorm, pnorm, dnorm, qnorm
 rnorm(50, mean=27.3, sd=2.3)
-# - returns a random values of a normal distribution of a given number of observations, mean, and sd.
-pnorm(62, )
+# - returns a random, normal distribution of a given number of observations, mean, and sd.
+pnorm(62, mean = 24,sd=5)
+# -returns the distribution of a normal distribution of a given number of observations, mean, and sd.
+qnorm(62, mean = 24,sd=5)
+# -returns the quatile of a normal distribution of a given number of observations, mean, and sd.
+dnorm(62, mean = 24,sd=5)
+# -returns the density of a normal distribution of a given number of observations, mean, and sd.
 
 # runif, rpois
+runif(100,min=0,max=50)
+# - returns random deviates from the uniform distribution of 100 observations
+#and distribution limits of 0 to 50 .
+rpois(100,seq(0.5,2,0.5))
+# - returns random deviates from a poission distribution of 100 random variables
+#provided a vector of mean values.
 
-# rank
+# rank - returns the ranks of the values within a vector.
+num<-c(1:12,15:19)
+rank(num)
 
-# sort, rank, order
+# sort, order
+cr<-c(5,6,19,36,9,2,18)
+sort(cr)
+# - sorts the random values within the vector.
+order(cr)
+# - returns the order of the rank of each value in the vector in a descending 
+#order
 
 # outer
+outer(num,cr,"*")
+# - returns the outer product of two vectors. Performs the function on the values in num and cr
+#and returns a matrix.
 
-# rep
+# rep - replicates the values given in the argument.
+rep(cr,2)
+# - replicates the values in cr two times.
 
-# rowSum, colSum
+# rowSum, colSum - calculates the sum of a the column or row of interest.
 
-# seq
+# seq - generates regular sequences of the provided values by a provided increment.
+seq(2,12,2)
+# - returns a sequence of the numbers 2-12 by 2 increments.
 
-# source
+# source - a file is read and evaluated in the chosen location.
 
-# which, which.min, which.max
+# which, which.min, which.max - returns the values which are true, the min() that is true, and the max() that is true.
+TF<-c(TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,TRUE)
+which(TF)
+# setdiff, intersect, union 
+setdiff(num,cr)
+# - will return a vector of all the values that are not common in the two vectors.
+union(num,cr)
+# - will unite the values in the vectors into one vector.
+intersect(num,cr)
+# - will return a vector of all the values that are common in the two vectors.
 
-# setdiff, intersect, union
-
-# table
+# table - creates a contigency table using the values provided as cross factors.
+table(cr,levels=c('A','B','C','D','E','F','G'))
 
 # with - command that evaluates a called expression using the environment created by the data.
 with(beetledata, )
